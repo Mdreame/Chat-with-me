@@ -71,14 +71,20 @@
                 if (view === "right") {
                     //右侧信息模板
                     return `<div class="msgItem right">
-                        <section>${value}</section>
+                        <section>
+                            <p id="name">jiang</p>
+                            <p class="content">${value}</p>
+                        </section>
                         <img src="./assets/jiang.jpg" alt="" class="avatar" />
                         </div>`;
                 } else if (view === "left") {
                     //   左侧信息模板;
                     return `<div class="msgItem left">
                         <img src="./assets/yun.jpg" alt="" class="avatar" />
-                        <section>${value}</section>
+                        <section>
+                            <p id="name">yun</p>
+                            <p class="content">${value}</p>
+                        </section>
                         </div>`;
                 } else {
                     return `err`;

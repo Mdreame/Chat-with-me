@@ -1,16 +1,21 @@
-*{
+:root{
+    font-size: 16px;
+}
+
+* {
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     padding: 20px;
     width: 100%;
     /* vh必须要有 */
-    height: 100vh;     
+    height: 100vh;
     box-sizing: border-box;
 }
 
-.container{
+.container {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -29,10 +34,10 @@ body{
     overflow-x: hidden;
 }
 /* 隐藏滚动条 */
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     display: none;
 }
-textarea{
+textarea {
     height: 16%;
     width: 100%;
     box-sizing: border-box;
@@ -44,57 +49,66 @@ textarea{
 
 /* 消息的样式 */
 /* 公共样式 */
-.msgItem{
+.msgItem {
     display: flex;
     margin-bottom: 20px;
 }
-.msgItem:last-child{
+.msgItem:last-child {
     margin-bottom: 0;
 }
 .msgItem .avatar {
     width: 40px;
     height: 40px;
 }
-.msgItem section{
-    /* width: 75%; */
+
+.msgItem .content {
     background-color: #fff;
     padding: 0.5rem;
     border-radius: 0.35rem;
     position: relative;
+    margin-top: 4px;
 }
-.msgItem section::after{
+#name {
+    /* position: absolute;
+    top: -16px;
+    left: 0; */
+    font-size: 0.5rem;
+    color: rgb(65, 65, 65);
+}
+.msgItem .content::after {
     content: "";
     width: 0;
     height: 0;
     border: 6px solid transparent;
     position: absolute;
-
 }
 /* 左侧消息样式 */
-.left section{
-    margin-left: 20px;
-    
+.left section {
+    margin-left: 16px;
 }
-.left section::after{
+.left .content::after {
     border-right-color: #fff;
-    top: 14px;
+    top: 7px;
     left: -12px;
 }
 /* 右侧消息样式 */
-.right{
+.right {
     justify-content: flex-end;
 }
-.right section{
-    margin-right: 20px;
+.right section {
+    margin-right: 16px;
 }
-.right section::after{
+.right #name{
+    text-align: right;
+}
+.right .content::after {
     border-left-color: #fff;
-    top: 14px;
-    right: -12px;
+    top: 7px;
+    right: -11px;
 }
 
 /* 错误内容提示 */
-.errMsg{
+.errMsg {
     background-color: #cccccc88;
     width: 120px;
     height: 30px;
