@@ -4,28 +4,33 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>yun</title>
-        <link rel="shortcut icon" href="./assets/yun.ico" />
+        <title>jiang</title>
+        <link rel="shortcut icon" href="./assets/jiang.ico" />
         <link rel="stylesheet" href="./index.css" />
     </head>
     <body>
+        <header>
+            <button class="backBtn">⬅</button>
+            <div class="username">yun</div>
+        </header>
         <main class="container">
             <div class="msgarea"></div>
-            <textarea id="input" name="" placeholder="请输入内容..."></textarea>
             <div id="errMsg" class="errMsg">内容不合法</div>
         </main>
+        <footer>
+            <textarea id="input" name="" placeholder="请输入内容..."></textarea>
+            <button class="sendBtn">发送</button>
+        </footer>
         <script>
             let input = document.getElementById("input");
 
             /* 
                 websocket
             */
-            const ws = new WebSocket("ws://localhost:3000/ws/yun");
-            ws.onopen = () => {
-                console.log("yun建立连接");
-            };
+            //    与/ws/jiang建立连接
+            const ws = new WebSocket("ws://localhost:3000/ws/jiang");
+            ws.onopen = () => {};
             ws.onmessage = (res) => {
-                console.log(res.data);
                 let resBody = res.data.replace("\n", "").split(",");
                 let msgArea = document.getElementsByClassName("msgarea")[0];
                 //   生成消息html，并添加到消息区
@@ -37,8 +42,12 @@
                     behavior: "smooth",
                 });
             };
-            ws.onclose = () => {};
-            ws.onerror = () => {};
+            ws.onclose = () => {
+                console.log("连接断开");
+            };
+            ws.onerror = () => {
+                console.log("connecting err");
+            };
 
             //   信息输入监听enter键
             input.onkeyup = (e) => {
@@ -55,7 +64,6 @@
                             errMsg.style.display = "none";
                         }, 1000);
                     }
-
                     //清空输入区
                     input.value = "";
                 }
@@ -67,17 +75,17 @@
                     //右侧信息模板
                     return `<div class="msgItem right">
                         <section>
-                            <p id="name">yun</p>
+                            <p id="name">jiang</p>
                             <p class="content">${value}</p>
                         </section>
-                        <img src="./assets/yun.jpg" alt="" class="avatar" />
+                        <img src="./assets/jiang.jpg" alt="" class="avatar" />
                         </div>`;
                 } else if (view === "left") {
                     //   左侧信息模板;
                     return `<div class="msgItem left">
-                        <img src="./assets/jiang.jpg" alt="" class="avatar" />
+                        <img src="./assets/yun.jpg" alt="" class="avatar" />
                         <section>
-                            <p id="name">jiang</p>
+                            <p id="name">yun</p>
                             <p class="content">${value}</p>
                         </section>
                         </div>`;

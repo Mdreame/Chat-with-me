@@ -5,18 +5,33 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-body {
-    padding: 20px;
-    width: 100%;
-    /* vh必须要有 */
-    height: 100vh;
     box-sizing: border-box;
 }
 
+body {
+    width: 100%;
+    /* vh必须要有 */
+    height: 100vh;
+}
+header{
+    height: 10%;
+    /* padding: 10px; */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header .backBtn{
+    position: absolute;
+    left: 5%;
+}
+header .username{
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
 .container {
-    height: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -24,12 +39,10 @@ body {
 }
 
 .msgarea {
-    height: 80%;
-    /* width: calc(100% + 17px) ; */
+    height: 100%;
     padding: 20px;
-    box-sizing: border-box;
     background-color: #eee;
-    border: 1px solid rebeccapurple;
+    /* border: 1px 0 1px 0 solid rgb(2, 34, 65); */
     overflow: scroll;
     overflow-x: hidden;
 }
@@ -38,13 +51,13 @@ body {
     display: none;
 }
 textarea {
-    height: 16%;
-    width: 100%;
-    box-sizing: border-box;
+    height: 100%;
+    width: 80%;
     border: 1px solid rebeccapurple;
     resize: none;
     padding: 0.5rem;
     outline: none;
+    border-radius: 5;
 }
 
 /* 消息的样式 */
@@ -67,11 +80,9 @@ textarea {
     border-radius: 0.35rem;
     position: relative;
     margin-top: 4px;
+    word-break: break-word;
 }
 #name {
-    /* position: absolute;
-    top: -16px;
-    left: 0; */
     font-size: 0.5rem;
     color: rgb(65, 65, 65);
 }
@@ -118,4 +129,12 @@ textarea {
     top: 40%;
     left: calc(50% - 60px);
     display: none;
+}
+
+/* footer */
+footer{
+    height: 10%;
+    padding:  10px;
+    display: flex;
+    justify-content: space-between;
 }
