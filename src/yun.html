@@ -33,7 +33,7 @@
                 let direction =
                     res.data.indexOf("left") === 0 ? "left" : "right";
                 let resBody = res.data.replace("\n", "").slice(5);
-
+                
                 let msgArea = document.getElementsByClassName("msgarea")[0];
                 //   生成消息html，并添加到消息区
                 msgArea.innerHTML += genTemplate(direction, resBody);
@@ -53,8 +53,6 @@
                     // 判断输入非空
                     if (input.value.trim() !== "") {
                         ws.send(input.value);
-                        console.log(input.value);
-                        
                     } else {
                         let errMsg =
                             document.getElementsByClassName("errMsg")[0];
