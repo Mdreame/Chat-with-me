@@ -30,10 +30,13 @@
             const ws = new WebSocket("ws://localhost:3000/ws/yun");
             ws.onopen = () => {};
             ws.onmessage = (res) => {
-                let resBody = res.data.replace("\n", "").split(",");
+                let direction =
+                    res.data.indexOf("left") === 0 ? "left" : "right";
+                let resBody = res.data.replace("\n", "").slice(5);
+
                 let msgArea = document.getElementsByClassName("msgarea")[0];
                 //   生成消息html，并添加到消息区
-                msgArea.innerHTML += genTemplate(resBody[0], resBody[1]);
+                msgArea.innerHTML += genTemplate(direction, resBody);
 
                 //   新消息滚动到底部
                 msgArea.scrollTo({
@@ -50,6 +53,8 @@
                     // 判断输入非空
                     if (input.value.trim() !== "") {
                         ws.send(input.value);
+                        console.log(input.value);
+                        
                     } else {
                         let errMsg =
                             document.getElementsByClassName("errMsg")[0];

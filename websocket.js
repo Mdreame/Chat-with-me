@@ -13,15 +13,17 @@ router.ws("/jiang", (ws) => {
     });
     
     ws.on("message", (msg) => {
+        console.log("服务器接收："+msg);
+        
         jiangArr.push(msg);     //接收yun的消息
-        ws.send("right," + msg);    //回流自己发送的消息
+        ws.send("right" + msg);    //回流自己发送的消息
     });
 
     timer1 = setInterval(() => {
         if (yunArr.length > 0) {
             let msgItem = yunArr[0];
             yunArr.shift();
-            ws.send("left," + msgItem);
+            ws.send("left " + msgItem);
         }
     }, 1000);
 });
